@@ -24,12 +24,7 @@ namespace KiddyAPI.Info
             int pId = 0;
             GetWindowThreadProcessId(hWnd, ref pId);
             var p = Process.GetProcessById(pId);
-            if (p.MainWindowTitle.Contains(name))
-                return true;
-            else
-            {
-                return false;
-            }
+            return p.MainWindowTitle.Contains(name);
 
         }
     }

@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KiddyAPI</RootNamespace>
     <AssemblyName>KiddyAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Info\CheckWindow.cs" />
     <Compile Include="Info\SystemWork.cs" />
+    <Compile Include="Info\WebCam.cs" />
     <Compile Include="Injector\Injector.cs" />
     <Compile Include="Injector\NativeAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

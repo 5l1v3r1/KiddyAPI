@@ -85,5 +85,9 @@ namespace KiddyAPI.Injector
         public static extern bool SetKernelObjectSecurity(IntPtr Handle, int securityInformation, [In] byte[] pSecurityDescriptor);
         [DllImport("kernel32.dll")]
         public static extern IntPtr GetCurrentProcess();
+        [DllImport("avicap32.dll", EntryPoint = "capCreateCaptureWindowA")]
+        public static extern IntPtr capCreateCaptureWindowA(string lpszWindowName, int dwStyle, int X, int Y, int nWidth, int nHeight, int hwndParent, int nID);
+        [DllImport("user32", EntryPoint = "SendMessage")]
+        public static extern int SendMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
     }
 }
