@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="Crypt\Decrypt.cs" />
     <Compile Include="Crypt\Encrypt.cs" />
-    <Compile Include="Crypt\Key.cs" />
+    <Compile Include="Crypt\Handler.cs" />
     <Compile Include="Info\CheckWindow.cs" />
     <Compile Include="Info\SystemWork.cs" />
     <Compile Include="Info\UniqueID.cs" />

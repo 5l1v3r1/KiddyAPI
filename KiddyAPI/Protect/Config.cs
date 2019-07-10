@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Principal;
 
 namespace KiddyAPI.Protect
 {
@@ -15,10 +10,8 @@ namespace KiddyAPI.Protect
         /// <summary>
         /// Поле, которое вернет true, если программа запущена под администратором, иначе false
         /// </summary>
-        public static bool IsAdmin
-        {
-            get { return WindowsIdentity.GetCurrent().Owner.IsWellKnown(WellKnownSidType.AccountAdministratorSid); }
-        }
-        
+        public static bool IsAdmin => WindowsIdentity.GetCurrent().Owner.IsWellKnown(WellKnownSidType.AccountAdministratorSid);
+
+        public static string uploadRSAPrivateKey = "https://example.com/";
     }
 }

@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
 using System.Drawing;
-using System.Linq;
 using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KiddyAPI.Info
