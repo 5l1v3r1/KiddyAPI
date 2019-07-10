@@ -1,17 +1,11 @@
 # KiddyAPI
-KiddyAPI создана от "скрипт-кидди" для "скрипт-кидди". Библиотека, для изучения не очень правильных методов работы с Windows OS.
-
 KiddyAPI Open-Source Library is created from script-kiddies for script-kiddies. Library for learning not very correct methods of working with Windows.
-
-Тестировалась на Win7 x64. В ближайшем времени буду добавлять еще функций.
 
 Tested on Win7 x64. In the near future I will add more features.
 ## Отказ от ответственности: / Denial of responsibility: 
 Данная библиотека была написана в образовательных целях, автор не несет ответственности за использование в других целях.
 
 This library was written for educational purposes; the author is not responsible for use for other purposes.
-
-Использовать только на своих компьютерах или с разрешения пользователя
 
 Use only on their computers or with the permission of the user
 
