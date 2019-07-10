@@ -1,4 +1,8 @@
-﻿using System;
+﻿/////////////////////////////////////////////////////////
+//// Developer : Whiro
+//// For for educational purposes
+//////////////////////////////////////////////////////////
+using System;
 using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
 using System.Drawing;

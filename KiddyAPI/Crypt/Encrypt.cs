@@ -1,7 +1,9 @@
-﻿using System;
+﻿/////////////////////////////////////////////////////////
+//// Developer : Whiro
+//// For for educational purposes
+//////////////////////////////////////////////////////////
+
 using System.IO;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace KiddyAPI.Crypt
 {

@@ -1,4 +1,8 @@
-﻿using System;
+﻿/////////////////////////////////////////////////////////
+//// Developer : Whiro
+//// For for educational purposes
+//////////////////////////////////////////////////////////
+using System;
 using System.ComponentModel;
 using System.Security.AccessControl;
 using System.Security.Principal;
