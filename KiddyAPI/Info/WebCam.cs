@@ -8,7 +8,7 @@ using KiddyAPI.Injector;
 
 namespace KiddyAPI.Info
 {
-    class WebCam
+    public class WebCam
     {
         public static void GetPhoto(string path)
         {
