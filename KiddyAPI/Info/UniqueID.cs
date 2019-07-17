@@ -9,7 +9,7 @@ using System.Text;
 
 namespace KiddyAPI.Info
 {
-    class UniqueID
+    public class UniqueID
     {
         public static string GetUniqueHardwaeId()
         {
