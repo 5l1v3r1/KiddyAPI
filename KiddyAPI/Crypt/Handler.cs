@@ -11,7 +11,7 @@ using KiddyAPI.Protect;
 
 namespace KiddyAPI.Crypt
 {
-    class Handler
+    public class Handler
     {
         public static byte[] GenerateKey()
         {
@@ -65,7 +65,7 @@ namespace KiddyAPI.Crypt
             using (MemoryStream ms = new MemoryStream())
             {
                 var help = new Rfc2898DeriveBytes(key,saltBytes,1000);
-                aes.IV = help.GetBytes(aes.KeySize / 8);
+                aes.IV = help.GetBytes(aes.BlockSize / 8);
                 aes.Mode = CipherMode.CBC;
                 using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(key, aes.IV), CryptoStreamMode.Write))
                 {

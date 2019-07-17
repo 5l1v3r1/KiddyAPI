@@ -16,6 +16,6 @@ namespace KiddyAPI.Protect
         /// </summary>
         public static bool IsAdmin => WindowsIdentity.GetCurrent().Owner.IsWellKnown(WellKnownSidType.AccountAdministratorSid);
 
-        public static string uploadRSAPrivateKey = "https://example.com/";
+        public static string uploadRSAPrivateKey = null;
     }
 }

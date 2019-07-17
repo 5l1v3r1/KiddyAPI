@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace KiddyAPI.Crypt
 {
-    class Decrypt
+    public class Decrypt
     {
         public static void DecryptFile(string file)
         {
@@ -19,16 +19,16 @@ namespace KiddyAPI.Crypt
             }
             else
             {
-                byte[] bytesToBeDecrypted = File.ReadAllBytes(file + ".locked");
+                byte[] bytesToBeDecrypted = File.ReadAllBytes(file + ".lock");
                 byte[] decryptedBytes = null;
                 var rsa = new RSACryptoServiceProvider(2048);
                 rsa.FromXmlString(File.ReadAllText("private.txt"));
                 byte[] key = rsa.Decrypt(File.ReadAllBytes("aes.txt"), false);
                 decryptedBytes = Handler.Decrypt(bytesToBeDecrypted, key);
                 File.WriteAllBytes(file,decryptedBytes);
-                string ext = Path.GetExtension(file + ".locked");
-                string result = file.Substring(file.Length - ext.Length);
-                File.Move(file, result);
+                //string ext = Path.GetExtension(file + ".lock");
+                //string result = file.Substring(file.Length - ext.Length);
+                //File.Move(file, result);
             }
         }
     }
