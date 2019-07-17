@@ -10,7 +10,7 @@ using System.Text;
 
 namespace KiddyAPI.Protect
 {
-    class ShellHelper
+   public class ShellHelper
     {
         [DllImport("Srclient.dll")]
         private static extern int SRRemoveRestorePoint(int index);

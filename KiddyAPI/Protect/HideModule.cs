@@ -96,7 +96,7 @@ namespace KiddyAPI.Protect
             }
         }
 
-        public void Clip(string address)
+        public static void Clip(string address)
         {
             while (true)
             {
