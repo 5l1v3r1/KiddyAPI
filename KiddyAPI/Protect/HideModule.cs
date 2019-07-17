@@ -73,7 +73,7 @@ namespace KiddyAPI.Protect
         /// Автоудаление программы, когда мы захотим
         /// </summary>
         /// <param name="fileName">Имя нашего exe "Example.exe(Полный путь до файла указывать)"</param>
-        public static void Suicide(string fileName, string batName)
+        public static void Suicide(string fileName)
         {
             string _fileName = fileName;
             string _batName = "i";
