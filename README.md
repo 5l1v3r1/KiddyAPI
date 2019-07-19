@@ -1,6 +1,11 @@
 # KiddyAPI
 KiddyAPI Open-Source Library is created from script-kiddies for script-kiddies. Library for learning not very correct methods of working with Windows.
 
+Я не добавлял в библиотеку блоки try/catch, потому что посчитал, что правильнее их будет добавлять, в вызываемых методов из библиотеки, возможно это и не правильно
+
+
+I did not add try / catch blocks to the library, because I thought it would be more correct to add them to the called methods from the library, perhaps this is not correct
+
 Tested on Win7 x64. In the near future I will add more features. 
 If something doesn’t work please email me
 ## Отказ от ответственности: / Denial of responsibility: 
