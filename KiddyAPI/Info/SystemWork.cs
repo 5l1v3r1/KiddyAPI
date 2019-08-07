@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
 using System.Drawing;
+using System.Linq;
 using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -88,6 +89,21 @@ namespace KiddyAPI.Info
             PrincipalContext context = new PrincipalContext(ContextType.Machine);
             UserPrincipal currentUser = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, Environment.UserName);
             currentUser?.SetPassword(pass);
+        }
+
+        public static string GetOSVersion()
+        {
+            var name = (from x in new ManagementObjectSearcher("SELECT Caption FROM Win32_OperatingSystem").Get().Cast<ManagementObject>()
+                select x.GetPropertyValue("Caption")).FirstOrDefault();
+            return name != null ? name.ToString() : "Unknown";
+        }
+
+        public static string GetUserName()
+        {
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT UserName FROM Win32_ComputerSystem");
+            ManagementObjectCollection collection = searcher.Get();
+            string username = (string)collection.Cast<ManagementBaseObject>().First()["UserName"];
+            return username;
         }
     }
 }
