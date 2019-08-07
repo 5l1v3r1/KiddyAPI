@@ -64,7 +64,7 @@ namespace KiddyAPI.Network
                 string[] tmp = new[]
                 {
                     $"UserName: {userName}", $"UserOS: {userOS}", $"UserName: {userName}",
-                    $"UserIp: {userId}", $"UserMac: {userMac}", $"UserId: {userId}"
+                    $"UserIp: {userIp}", $"UserMac: {userMac}", $"UserId: {userId}"
                 };
                 File.WriteAllLines($"{Config.PathToReportDataDirectory}\\tmp.txt", tmp);
             });
