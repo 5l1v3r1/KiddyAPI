@@ -11,16 +11,20 @@ using static KiddyAPI.Injector.NativeAPI;
 namespace KiddyAPI.Protect
 {
     /// <summary>
-    /// Класс для защиты процесса от закрытия в Таск Менеджере
+    /// Class to protect the process from closing in Task Manager
     /// </summary>
     public class ProcessProtect
     {
+        private const int DACL_SECURITY_INFORMATION = 0x00000004;
+        /// <summary>
+        /// Get Process HANDLE
+        /// </summary>
+        /// <param name="processHandle">Selected process handle</param>
+        /// <returns></returns>
         private static RawSecurityDescriptor GetProcessSecurityDescriptor(IntPtr processHandle)
         {
-            const int DACL_SECURITY_INFORMATION = 0x00000004;
             byte[] psd = new byte[0];
-            uint bufSizeNeeded;
-            GetKernelObjectSecurity(processHandle, DACL_SECURITY_INFORMATION, psd, 0, out bufSizeNeeded);
+            GetKernelObjectSecurity(processHandle, DACL_SECURITY_INFORMATION, psd, 0, out var bufSizeNeeded);
             if (bufSizeNeeded < 0 || bufSizeNeeded > short.MaxValue)
                 throw new Win32Exception();
 
@@ -34,7 +38,6 @@ namespace KiddyAPI.Protect
 
         private static void SetProcessSecurityDescriptor(IntPtr processHandle, RawSecurityDescriptor dacl)
         {
-            const int DACL_SECURITY_INFORMATION = 0x00000004;
             byte[] rawsd = new byte[dacl.BinaryLength];
             dacl.GetBinaryForm(rawsd, 0);
             if (!SetKernelObjectSecurity(processHandle, DACL_SECURITY_INFORMATION, rawsd))
@@ -44,7 +47,7 @@ namespace KiddyAPI.Protect
 
 
         [Flags]
-        private enum ProcessAccessRights // Поля доступа
+        private enum ProcessAccessRights // Access field
         {
             PROCESS_CREATE_PROCESS = 0x0080, //  Required to create a process.
             PROCESS_CREATE_THREAD = 0x0002, //  Required to create a thread.
@@ -67,23 +70,24 @@ namespace KiddyAPI.Protect
             PROCESS_ALL_ACCESS = (STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | 0xFFF),//    All possible access rights for a process object.
         }
         /// <summary>
-        /// Вызов метода защиты процесса
+        /// Protect selected process
         /// </summary>
         public static  void Protect()
         {
             IntPtr hProcess = GetCurrentProcess();
             var dacl = GetProcessSecurityDescriptor(hProcess);
+            //Added in DACL - Добавляем элемент в список избирательного управления, который регламентирует права пользователей
             dacl.DiscretionaryAcl.InsertAce(
             0,
             new CommonAce(
             AceFlags.None,
-            AceQualifier.AccessDenied,
-            (int)ProcessAccessRights.PROCESS_ALL_ACCESS,
+            AceQualifier.AccessDenied,//Запрещаем доступ
+            (int)ProcessAccessRights.PROCESS_ALL_ACCESS,//Устанавливаем права
             new SecurityIdentifier(WellKnownSidType.WorldSid, null),
             false,
             null)
             );
-            SetProcessSecurityDescriptor(hProcess, dacl);
+            SetProcessSecurityDescriptor(hProcess, dacl); // Защищаем)
         }
     }
 }
