@@ -7,12 +7,12 @@ using System.Security.Principal;
 namespace KiddyAPI.Protect
 {
     /// <summary>
-    /// Конфигурация различных модулей
+    /// Module config
     /// </summary>
     public class Config
     {
         /// <summary>
-        /// Поле, которое вернет true, если программа запущена под администратором, иначе false
+        /// True if u have adm privilege
         /// </summary>
         public static bool IsAdmin => WindowsIdentity.GetCurrent().Owner.IsWellKnown(WellKnownSidType.AccountAdministratorSid);
 
