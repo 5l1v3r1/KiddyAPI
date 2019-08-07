@@ -9,8 +9,15 @@ using System.Text;
 
 namespace KiddyAPI.Info
 {
+    /// <summary>
+    /// Class to get UniqueId
+    /// </summary>
     public class UniqueID
     {
+        /// <summary>
+        /// Get hash summ hardware id
+        /// </summary>
+        /// <returns>Hash in string value</returns>
         public static string GetUniqueHardwaeId()
         {
             StringBuilder sb = new StringBuilder();
