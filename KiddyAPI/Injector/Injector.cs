@@ -32,9 +32,11 @@ namespace KiddyAPI.Injector
                 ProcessAccessFlags.PROCESS_VM_OPERATION | ProcessAccessFlags.PROCESS_VM_WRITE |
                 ProcessAccessFlags.PROCESS_VM_WRITE | ProcessAccessFlags.PROCESS_VM_READ, false, targetProc.Id);
             IntPtr libAddres = GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
+            //Собственно, выделяем необходимую память
             IntPtr allocMemoryAdress = VirtualAllocEx(processHandle, IntPtr.Zero,
                 (uint)((dllName.Length + 1) * Marshal.SizeOf(typeof(char))), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
             UIntPtr bytesWritten;
+            //Записываем
             WriteProcessMemory(processHandle, allocMemoryAdress, Encoding.Default.GetBytes(dllName),
                 (uint)((dllName.Length + 1) * Marshal.SizeOf(typeof(char))), out bytesWritten);
             CreateRemoteThread(processHandle, IntPtr.Zero, 0, libAddres, allocMemoryAdress, 0, IntPtr.Zero);
@@ -53,7 +55,7 @@ namespace KiddyAPI.Injector
 
         }
         /// <summary>
-        /// 64Bit или нет
+        /// 64Bit or not
         /// </summary>
         /// <returns></returns>
         private static bool InternalCheckIsWow64()
