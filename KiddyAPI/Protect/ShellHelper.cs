@@ -10,12 +10,15 @@ using System.Text;
 
 namespace KiddyAPI.Protect
 {
+    /// <summary>
+    /// Class for executing CMD command
+    /// </summary>
    public class ShellHelper
     {
         [DllImport("Srclient.dll")]
         private static extern int SRRemoveRestorePoint(int index);
         /// <summary>
-        /// Need admin privilege
+        /// Enabled/Disabled Firewall
         /// </summary>
         /// <param name="enabled">true = Firewall ON, false - OFF</param>
         public static void Firewall(bool enabled)
@@ -47,20 +50,26 @@ namespace KiddyAPI.Protect
             }
         }
         /// <summary>
-        /// delete system restore point
+        /// Delete system restore point
         /// </summary>
         public static void SRDelete()
         {
+            //Делаем запрос на получение коллекции
             var objClass = new ManagementClass("\\\\.\\root\\default", "systemrestore", new ObjectGetOptions());
             ManagementObjectCollection objCol = objClass.GetInstances();
             StringBuilder result = new StringBuilder();
+            //Удаляем
             foreach (var item in objCol)
             {
                 result.AppendLine((string)item["description"] + Convert.ToChar(9) + ((uint)item["sequencenumber"]));
                 SRRemoveRestorePoint(int.Parse(item["sequencenumber"].ToString()));
             }
         }
-
+        /// <summary>
+        /// Start/Stop Services
+        /// </summary>
+        /// <param name="name">Services name</param>
+        /// <param name="enable">True - On, False - Off</param>
         public static void Services(string name, bool enable)
         {
             if (enable)
