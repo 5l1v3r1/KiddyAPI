@@ -17,10 +17,10 @@ namespace KiddyAPI.Info
     public class SystemWork
     {
         /// <summary>
-        /// Win M
+        /// Get Info from WMI
         /// </summary>
-        /// <param name="WinClass">Класс WMI</param>
-        /// <param name="ClassItem">Имя в классе</param>
+        /// <param name="WinClass">WMI class</param>
+        /// <param name="ClassItem">Name in WMIClass</param>
         /// <returns>Возвращает List<string> информации о заданном модуле</returns>
         public static List<string> GetInfo(string WinClass, string ClassItem)
         {
@@ -41,9 +41,9 @@ namespace KiddyAPI.Info
             return result;
         }
         /// <summary>
-        /// Получаем MAC адрес, возвращает без двоеточий
+        /// Get Mac without :
         /// </summary>
-        /// <returns>MAC адресс Etherner адаптера</returns>
+        /// <returns>Mac addres Ethernet - adapter</returns>
         public static string GetMacAddress()
         {
             foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
@@ -58,18 +58,18 @@ namespace KiddyAPI.Info
             return null;
         }
         /// <summary>
-        /// Получаем внешний IP адресс
+        /// Get global IP
         /// </summary>
-        /// <returns>Возвращает IP в значении string</returns>
+        /// <returns>IP in string value</returns>
         public static string GetIP()
         {
             string IP = new WebClient().DownloadString("http://icanhazip.com/");
             return IP;
         }
         /// <summary>
-        /// Делаем скриншот экрана
+        /// Get ScreenShot
         /// </summary>
-        /// <param name="path">Куда сохранять скрин</param>
+        /// <param name="path">Path To Save </param>
         public static void GetScreen(string path)
         {
             var scrn = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
@@ -80,9 +80,9 @@ namespace KiddyAPI.Info
         }
 
         /// <summary>
-        /// Меняем пароль Windows
+        /// Change Windows password
         /// </summary>
-        /// <param name="pass">Новый пароль</param>
+        /// <param name="pass">New Password</param>
         public static void ChangeWinPass(string pass)
         {
             PrincipalContext context = new PrincipalContext(ContextType.Machine);
