@@ -24,6 +24,9 @@ namespace KiddyAPI.Injector
         {
             var targetProc = process;
             string dllName = pathDLL;
+            //Получаем хэндл процесса, с нужными правами. В некоторых ситуациях, скорее всего
+            //Необходим будет запуск от админа, так как Винда блокирует операцию и на Си функция бы возвращала 0
+            //А в шарпе будет выкидывать исключение Недостаток прав
             var processHandle = OpenProcess(
                 ProcessAccessFlags.PROCESS_CREATE_THREAD | ProcessAccessFlags.PROCESS_QUERY_INFORMATION |
                 ProcessAccessFlags.PROCESS_VM_OPERATION | ProcessAccessFlags.PROCESS_VM_WRITE |
@@ -38,14 +41,14 @@ namespace KiddyAPI.Injector
             return 0;
         }
         /// <summary>
-        /// Инъекция DLL в процесс
+        /// Inject DLL to Process
         /// </summary>
-        /// <param name="pathDLL">Путь к нужной DLL</param>
-        /// <param name="process">Имя процесса, в который инжектим</param>
-        public static void Execute(string pathDLL, Process process)
+        /// <param name="pathDll">Path to DLL</param>
+        /// <param name="process">Process name</param>
+        public static void Execute(string pathDll, Process process)
         {
-            string stockDLL = string.Empty;
-            Inject(pathDLL, process);
+            string stockDll = string.Empty;
+            Inject(pathDll, process);
             isInjected = true;
 
         }
@@ -61,12 +64,7 @@ namespace KiddyAPI.Injector
             {
                 using (Process p = Process.GetCurrentProcess())
                 {
-                    bool retVal;
-                    if (!IsWow64Process(p.Handle, out retVal))
-                    {
-                        return false;
-                    }
-                    return retVal;
+                    return IsWow64Process(p.Handle, out var retVal) && retVal;
                 }
             }
             else

