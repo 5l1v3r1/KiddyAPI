@@ -16,7 +16,7 @@ namespace KiddyAPI.Network
         /// Upload to ur Ftp Server choosed file
         /// </summary>
         /// <param name="userName">FTPServer Username</param>
-        /// <param name="password">FTPServer Username</param>
+        /// <param name="password">FTPServer Password</param>
         /// <param name="hostName">FTPServer hostname</param>
         /// <param name="pathToFile">Path to file</param>
         public static async void UploadReportAsync(string userName, string password, string hostName,string pathToFile)
